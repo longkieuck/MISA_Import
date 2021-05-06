@@ -14,6 +14,13 @@ namespace MISA.Import.Service
     public class ImportService
     {
         DBService db = new DBService();
+        /// <summary>
+        /// Thực hiện nhập khẩu và đổ dữ liệu ra list
+        /// </summary>
+        /// <param name="formFile"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        /// CreatedBy KDLong 06/05/2021
         public IEnumerable<Customer> Import(IFormFile formFile, CancellationToken cancellationToken)
         {
 
@@ -145,7 +152,16 @@ namespace MISA.Import.Service
             }
             return list;
         }
-
+        /// <summary>
+        /// Format Date
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns>
+        /// Date
+        /// Vd:12/2021 =>01/12/2021
+        /// Vd:2021=>01/01/2021
+        /// </returns>
+        /// CreatedBy KDLong 06/05/2021
         private DateTime FormatDate(string date)
         {
             DateTime res = new DateTime();

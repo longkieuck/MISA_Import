@@ -9,11 +9,20 @@ using System.Threading.Tasks;
 
 namespace MISA.Import.Controllers
 {
+    /// <summary>
+    /// CustomerGroupController
+    /// </summary>
+    /// CreatedBy KDLong 06/05/2021
     [Route("api/v1/[controller]s")]
     [ApiController]
     public class CustomerGroupController : ControllerBase
     {
         DBService db = new DBService();
+        /// <summary>
+        /// Lấy tất cả nhóm khách hàng
+        /// </summary>
+        /// <returns></returns>
+        /// CreatedBy KDLong 06/05/2021
         [HttpGet]
         public IActionResult Get()
         {
@@ -25,7 +34,12 @@ namespace MISA.Import.Controllers
             }
             return NoContent();
         }
-
+        /// <summary>
+        /// Thêm mới một nhóm khách hàng
+        /// </summary>
+        /// <param name="customerGroup"></param>
+        /// <returns></returns>
+        /// CreatedBy KDLong 06/05/2021
         [HttpPost]
         public IActionResult Post([FromBody] CustomerGroup customerGroup)
         {

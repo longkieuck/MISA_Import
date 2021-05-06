@@ -18,7 +18,12 @@ namespace MISA.Import.Repository
            "User Id= dev;" +
            "Password = 12345678;";
         protected IDbConnection dbConnection;
-
+        /// <summary>
+        /// Thêm mới 1 khách hàng
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <returns>Số bản ghi thay đổi</returns>
+        /// CreatedBy KDLong 06/05/2021
         public int InsertCustomer(Customer customer)
         {
             using (dbConnection = new MySqlConnection(connectionString))
@@ -27,6 +32,12 @@ namespace MISA.Import.Repository
                 return rowsAffect;
             }
         }
+        /// <summary>
+        /// Thêm mới nhóm khách hàng
+        /// </summary>
+        /// <param name="customerGroup"></param>
+        /// <returns></returns>
+        /// CreatedBy KDLong 06/05/2021
         public int InsertCustomerGroup(CustomerGroup customerGroup)
         {
             using (dbConnection = new MySqlConnection(connectionString))
@@ -35,6 +46,11 @@ namespace MISA.Import.Repository
                 return rowsAffect;
             }
         }
+        /// <summary>
+        /// Lấy tất cả khách hàng
+        /// </summary>
+        /// <returns></returns>
+        /// CreatedBy KDLong 06/05/2021
         public IEnumerable<Customer> GetAllCustomers()
         {
             using (dbConnection = new MySqlConnection(connectionString))
@@ -43,6 +59,11 @@ namespace MISA.Import.Repository
                 return data;
             }
         }
+        /// <summary>
+        /// Lấy tất cả nhóm khách hàng
+        /// </summary>
+        /// <returns></returns>
+        /// CreatedBy KDLong 06/05/2021
         public IEnumerable<CustomerGroup> GetAllCustomerGroups()
         {
             using (dbConnection = new MySqlConnection(connectionString))

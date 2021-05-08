@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kdlong\\Desktop\\Project\\MISA.Import\\MISA.Import\\MISA.Import.csproj": {}
+    "C:\\Users\\longk\\OneDrive\\Desktop\\LearningMisa\\MISA_Import\\MISA.Import\\MISA.Import.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kdlong\\Desktop\\Project\\MISA.Import\\MISA.Import\\MISA.Import.csproj": {
+    "C:\\Users\\longk\\OneDrive\\Desktop\\LearningMisa\\MISA_Import\\MISA.Import\\MISA.Import.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kdlong\\Desktop\\Project\\MISA.Import\\MISA.Import\\MISA.Import.csproj",
+        "projectUniqueName": "C:\\Users\\longk\\OneDrive\\Desktop\\LearningMisa\\MISA_Import\\MISA.Import\\MISA.Import.csproj",
         "projectName": "MISA.Import",
-        "projectPath": "C:\\Users\\kdlong\\Desktop\\Project\\MISA.Import\\MISA.Import\\MISA.Import.csproj",
-        "packagesPath": "C:\\Users\\kdlong\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kdlong\\Desktop\\Project\\MISA.Import\\MISA.Import\\obj\\",
+        "projectPath": "C:\\Users\\longk\\OneDrive\\Desktop\\LearningMisa\\MISA_Import\\MISA.Import\\MISA.Import.csproj",
+        "packagesPath": "C:\\Users\\longk\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\longk\\OneDrive\\Desktop\\LearningMisa\\MISA_Import\\MISA.Import\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\kdlong\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\longk\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

@@ -43,9 +43,6 @@ namespace MISA.Import.Service
                 using (var package = new ExcelPackage(stream))
                 {
                     ExcelPackage.LicenseContext = LicenseContext.Commercial;
-
-                    // If you use EPPlus in a noncommercial context
-                    // according to the Polyform Noncommercial license:
                     ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
                     ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
 
@@ -53,7 +50,7 @@ namespace MISA.Import.Service
                     var customerGroups = db.GetAllCustomerGroups();
 
                     var rowCount = worksheet.Dimension.Rows;
-
+                    //Sử lý dữ liệu từng hàng
                     for (int row = 3; row <= rowCount; row++)
                     {
 
@@ -111,7 +108,7 @@ namespace MISA.Import.Service
                         {
                             status += "Nhóm khách hàng không có trong hệ thống.";
                         }
-
+                        //Sử lý ngày tháng
                         var dateOfBirth = "";
                         if (worksheet.Cells[row, 6].Value == null)
                         {
@@ -126,6 +123,11 @@ namespace MISA.Import.Service
 
 
                         var fmDate = FormatDate(dateOfBirth);
+                        var newDate = new DateTime();
+                        if (DateTime.Equals(fmDate, newDate))
+                        {
+                            status += "Ngày sinh không đúng định dạng hoặc để trống.";
+                        }
                         var companyName = (string)worksheet.Cells[row, 7].Value;
                         var taxCode = worksheet.Cells[row, 8].Value.ToString().Trim();
                         var email = (string)worksheet.Cells[row, 9].Value;
@@ -165,21 +167,21 @@ namespace MISA.Import.Service
         private DateTime FormatDate(string date)
         {
             DateTime res = new DateTime();
-            Regex rg1 = new Regex(@"^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$");
-            Regex rg2 = new Regex(@"^(0[1-9]{1}|1[0-2]{1})/\d{4}$");
-            Regex rg3 = new Regex(@"\d{4}$");
-            if (rg1.IsMatch(date))
+            Regex rgddmmyyyy = new Regex(@"^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$");
+            Regex rgmmyyyy = new Regex(@"^(0[1-9]{1}|1[0-2]{1})/\d{4}$");
+            Regex rgyyyy = new Regex(@"\d{4}$");
+            if (rgddmmyyyy.IsMatch(date))
             {
                 DateTime res1 = DateTime.ParseExact(date, "dd/MM/yyyy", null);
                 return res1;
             }
-            else if (rg2.IsMatch(date))
+            else if (rgmmyyyy.IsMatch(date))
             {
                 string newDate = "01/" + date;
                 DateTime res1 = DateTime.ParseExact(newDate, "dd/MM/yyyy", null);
                 return res1;
             }
-            else if (rg3.IsMatch(date))
+            else if (rgyyyy.IsMatch(date))
             {
                 string newDate = "01/01/" + date;
                 DateTime res1 = DateTime.ParseExact(newDate, "dd/MM/yyyy", null);

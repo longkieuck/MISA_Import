@@ -30,6 +30,7 @@ namespace MISA.Import.Service
         public int InsertListCustomer(IEnumerable<Customer> customers)
         {
             var res = 0;
+            // Nếu Status = "" thì thêm vào db
             foreach (var customer in customers)
             {
                 if (customer.Status == "")
